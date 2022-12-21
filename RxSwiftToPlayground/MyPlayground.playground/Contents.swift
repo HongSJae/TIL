@@ -260,3 +260,24 @@ example(of: "never") {
     )
     .disposed(by: disposeBag)            // 4. 앞서 만든 쓰레기봉지에 버려줌
 }
+
+example(of: "PublishSubject") {
+
+    // 1
+    let subject = PublishSubject<String>()
+
+    // 2
+    subject.onNext("Is anyone listening?")
+
+    // 3
+    let subscriptionOne = subject
+        .subscribe(onNext: { (string) in
+            print("string: \(string)")
+        })
+
+    // 4
+    subject.on(.next("1"))        //Print: 1
+
+    // 5
+    subject.onNext("2")        //Print: 2
+}
