@@ -119,4 +119,42 @@ example(of: "DisposeBag") {
             print($0)
         }
         .disposed(by: disposeBag) // 4
+    /*
+     - 귀찮게 이런 짓을 왜 매번 해야하는걸까?
+
+        - 만약 dispose bag을 subscription에 추가하거나 수동적으로 dispose를 호출하는 것을 빼먹는다면, 당연히 메모리 누수가 일어날 것이다.
+        - 하지만 걱정마. Swift 컴파일러가 disposable을 쓰지 않을 때마다 경고를 날려줄거임 ^^
+     */
+}
+
+enum MyError: Error {
+    case anError
+}
+
+example(of: "create") {
+    let disposeBag = DisposeBag()
+    
+    Observable<String>.create({ (observer) -> Disposable in
+        // 1
+        observer.onNext("1")
+        
+        // 5
+//        observer.onError(MyError.anError)
+        
+        // 2
+//        observer.onCompleted()
+        
+        // 3
+        observer.onNext("?")
+        
+        // 4
+        return Disposables.create()
+    })
+    .subscribe(
+        onNext: { print($0) },
+        onError: { print($0) },
+        onCompleted: { print("Completed") },
+        onDisposed: { print("Disposed") }
+    )
+//    .disposed(by: disposeBag)
 }
