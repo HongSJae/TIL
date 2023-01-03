@@ -39,7 +39,7 @@ example(of: "subscribe") {
     
     let observable = Observable.of(one, two, three)
     observable.subscribe({ (event) in
-        print("This is \(event)")
+        print(event)
     })
     observable.subscribe { event in
         if let element = event.element {
@@ -92,3 +92,20 @@ example(of: "range") {
         print(fibonacci)
     })
 }
+
+example(of: "dispose") {
+    
+    // 1
+    let observable = Observable.of("A", "B", "C")
+    
+    // 2
+    let subscription = observable.subscribe({ (event) in
+        
+        // 3
+        print(event)
+    })
+    
+    subscription.dispose()
+}
+
+
