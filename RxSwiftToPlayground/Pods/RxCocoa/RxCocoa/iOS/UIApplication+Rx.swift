@@ -22,7 +22,7 @@ extension Reactive where Base: UIApplication {
     /// Reactive wrapper for `UIApplication.didEnterBackgroundNotification`
     public static var didEnterBackground: ControlEvent<Void> {
         let source = NotificationCenter.default.rx.notification(UIApplication.didEnterBackgroundNotification).map { _ in }
-        
+    
         return ControlEvent(events: source)
     }
     
