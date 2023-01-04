@@ -188,3 +188,45 @@ example(of: "deferred") {
         print()
     }
 }
+
+example(of: "Single") {
+    
+    // 1
+    let disposeBag = DisposeBag()
+    
+    // 2
+    enum FileReadError: Error {
+        case fileNotFound, unreadable, encodingFailed
+    }
+    
+    // 3
+    func loadText(from name: String) -> Single<String> {
+        // 4
+        return Single.create{ single in
+            // 4 - 1
+            let disposable = Disposables.create()
+            
+            // 4 - 2
+            guard let path = Bundle.main.path(forResource: name, ofType: "txt") else {
+                single(.failure(FileReadError.fileNotFound))
+                return disposable
+            }
+            
+            // 4 - 3
+            guard let data = FileManager.default.contents(atPath: path) else {
+                single(.failure(FileReadError.unreadable))
+                return disposable
+            }
+            
+            // 4 - 4
+            guard let contents = String(data: data, encoding: .utf8) else {
+                single(.failure(FileReadError.encodingFailed))
+                return disposable
+            }
+            
+            // 4 - 5
+            single(.success(contents))
+            return disposable
+        }
+    }
+}
