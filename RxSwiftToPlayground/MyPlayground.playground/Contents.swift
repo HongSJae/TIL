@@ -202,7 +202,7 @@ example(of: "Single") {
     // 3
     func loadText(from name: String) -> Single<String> {
         // 4
-        return Single.create{ single in
+        return Single.create { single in
             // 4 - 1
             let disposable = Disposables.create()
             
@@ -229,4 +229,34 @@ example(of: "Single") {
             return disposable
         }
     }
+//    loadText(from: "Copyright")
+//        .subscribe {
+//            switch $0 {
+//            case .success(let string):
+//                print(string)
+//            case .error(let error):
+//                print(error)
+//            }
+//        }
+//        .disposed(by: disposeBag)
+}
+
+example(of: "never") {
+    let observable = Observable<String>.of("a", "b", "c", "d", "e")
+    
+    // 1. 문제에서 요구한 dispose bag 생성
+    let disposeBag = DisposeBag()
+    
+    // 2. 그냥 뚫고 지나간다는 do의 onSubscribe 에다가 구독했음을 표시하는 문구를 프린트하도록 함
+    observable.do(
+        onSubscribe: { print("Subscribed")}
+        ).subscribe(                    // 3. 그리고 subscribe 함
+            onNext: { (element) in
+                print(element)
+        },
+            onCompleted: {
+                print("Completed")
+        }
+    )
+    .disposed(by: disposeBag)            // 4. 앞서 만든 쓰레기봉지에 버려줌
 }
