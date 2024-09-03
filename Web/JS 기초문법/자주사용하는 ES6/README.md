@@ -1,0 +1,2 @@
+# [JavaScript] 자주 사용하는 ES6 문법 정리
+이 파일에 정리된 ES6 문법은 [링크](https://velog.io/@kimhscom/JavaScript-%EC%9E%90%EC%A3%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-ES6-%EB%AC%B8%EB%B2%95-%EC%A0%95%EB%A6%AC)를 참고하여 만들어 졌습니다.
