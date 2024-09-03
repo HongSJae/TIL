@@ -24,3 +24,29 @@ const user = new myClass('승재', 19);
 console.log(user.name); // 승재
 console.log(user.age); // 19
 ```
+
+상속하려면 `extends`를 사용하세요!
+
+``` js
+class myClass {
+    constructor(name, age) {
+        this.name = name
+        this.age = age
+    }
+
+    sayHello() {
+        console.log(`안녕 ${name}, 너의 나이는 ${age}살이다.`);
+    }
+}
+
+class UserProfile extends myClass {
+    userName() {
+        console.log(this.name);
+    }
+}
+
+const profile = new UserProfile('승재', 19);
+
+profile.sayHello(); // 안녕 승재 너의 나이는 19살이다.
+profile.userName(); // 승재
+```
