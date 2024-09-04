@@ -19,7 +19,7 @@ const.log(myFunc('승재'));
 
 ```js
 const myFunc = (name, age = 19) => {
-    return 
+    return `안녕 ${name} 너의 나이는 ${age}살 이니?`;
 };
 
 console.log(myFunc('승재'));

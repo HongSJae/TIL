@@ -9,16 +9,16 @@ function myFunc(name) {
 }
 
 console.log(myFunc('영희'));
-// output >> 안녕 영희
+// output >> 안녕영희
 ``` 
 
 다음 코드를 사용합니다.
 ``` js
 // ES6
 const myFunc = (name) => {
-    return '안녕 ${name}';
+    return `안녕 ${name}`; // <- 백틱 사용>
 }
-console.log(myFunc('영희')); // output >> 안녕 영희
+console.log(myFunc('영희')); // output >> 안녕영희
 
 //또는 간결하게 화살표를 사용하거나 'return'키워드를 생략해도 됩니다.
 const myFunc = (name) => '안녕 ${name}';
@@ -35,7 +35,7 @@ const myArr = [1, 2, 3, 4, 5];
 let arr1 = myArr.map(function(item) {
     return item;
 });
-console.log(arr1); // output >> (5) [1, 2, 3, 4, 5]
+console.log(arr1); // output >> [1, 2, 3, 4, 5]
 
 // ES6
 let arr2 = myArr.map((item) => item);
