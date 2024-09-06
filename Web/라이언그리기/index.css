@@ -1,0 +1,143 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+body {
+    background: #313654;
+}
+
+.ryan:hover .eyebrow.left {
+    top: 100px;
+}
+
+.ryan:hover .eyebrow.right {
+    top: 110px;
+    transform: rotate(-10deg);
+}
+
+.ryan:hover .eye.right {
+    transform: scale(2, 0.1);
+}
+
+.ryan {
+    position: relative;
+    margin: 50px auto;
+    width: 400px;
+    height: 380px;
+}
+
+.ryan .face {
+    position: absolute;
+    bottom: 0;
+    width: 400px;
+    height: 367px;
+    border-radius: 100%;
+    border: 10px solid black;
+    background-color: #d59729;
+}
+
+.ryan .ear {
+    position: absolute;
+    top: 0;
+    width: 92px;
+    height: 92px;
+    border: 10px solid #000;
+    border-radius: 100%;
+    background-color: #d59729;
+}
+
+.ryan .ear.left {
+    left: 54px;
+}
+
+.ryan .ear.right {
+    right: 54px;
+}
+
+.ryan .eyebrow {
+    position: absolute;
+    top: 106px;
+    width: 78px;
+    height: 14px;
+    border-radius: 14%;
+    background-color: black;
+    transition: all 0.2s;
+}
+
+.ryan .eyebrow.left {
+    left: 68px;
+}
+
+.ryan .eyebrow.right {
+    right: 68px;
+}
+
+.ryan .eye {
+    position: absolute;
+    top: 147px;
+    width: 26px;
+    height: 26px;
+    border-radius: 100%;
+    background-color: black;
+    transition: all 0.2s;
+}
+
+.ryan .eye.left {
+    left: 98px;
+}
+
+.ryan .eye.right {
+    right: 98px
+}
+
+.ryan .nose {
+    position: absolute;
+    top: 184px;
+    margin-left: -16px;
+    left: 50%;
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+    background-color: black;
+    z-index: 3;
+}
+
+.ryan .mouth {
+    position: absolute;
+    top: 191px;
+    right: 73px;
+    width: 73px;
+    height: 68px;
+    border: 10px solid black;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.ryan .mouth.left {
+    left: 127px;
+}
+
+.ryan .mouth.right {
+    right: 127px;
+}
+
+.ryan .mouth:after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 33px;
+    background: white;
+    transform: rotate(-45deg);
+    z-index: 1;
+  }
+  
+  .ryan .mouth.left:after {
+    top: 2px;
+    left: 29px;
+  }
+  
+  .ryan .mouth.right:after {
+    top: 2px;
+    right: 31px;
+  }
+  
